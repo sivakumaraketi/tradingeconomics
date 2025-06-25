@@ -8,8 +8,11 @@ export const fetchIndicators = async (
   country: string,
   indicator: string
 ): Promise<TEDataPoint[]> => {
-  const response = await axios.get('http://localhost:3001/api/economic-data', {
-    params: { country, indicator }
-  });
+  const response = await axios.get(
+    `${BASE_URL}/historical/country/${country}/indicator/${indicator}`,
+    {
+      params: { c: API_KEY },
+    }
+  );
   return response.data;
 };
